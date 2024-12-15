@@ -56,15 +56,11 @@ export default function App() {
     const file = fileInput?.files?.[0];
 
     if (!file) {
-        document.getElementById('status').innerText = 'Please select a file.';
+        const statusElem = document.getElementById('status');
+        statusElem!.innerText = 'Please select a file.';
         return;
     }
-    // const params = {
-    //     Bucket: bucketName,
-    //     Key: file.name,
-    //     Body: file,
-    //     ACL: 'public-read'
-    // };
+
     try {
       const result = uploadData({
         key: file.name,
@@ -88,15 +84,7 @@ export default function App() {
 
   return (
     <main>
-      <h1>{user?.signInDetails?.loginId}'s todos</h1>
-      {/* <button onClick={createTodo}>+ new</button>
-      <ul>
-        {todos.map((todo) => (
-          <li 
-          onClick={() => completeTodo(todo.id)}
-          key={todo.id}>{todo.content} {todo.complete && 'comp'}</li>
-        ))}
-      </ul> */}
+      <h1>user:{user?.signInDetails?.loginId}</h1>
       <div>
         <br />
         <a href="https://docs.amplify.aws/nextjs/start/quickstart/nextjs-app-router-client-components/">
